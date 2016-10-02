@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AD_logout_style" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">#c2c3c4</item>
+        <item name="android:button">@drawable/butonatad</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">#c2c3c4</item>
+        <!-- Used for the background -->
+        <item name="android:background">@drawable/backgroundalertdialogreq</item>
+    </style>
+
+    <style name="Theme.LoginTheme" parent="@style/Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

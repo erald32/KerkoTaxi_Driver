@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jeddigital.kerkotaxi_vehicle.ShowClientOnMap">
+
+    <fragment
+        android:id="@+id/googleMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topBar"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        <!--class="com.google.android.gms.maps.SupportMapFragment" -->
+
+    <RelativeLayout
+     android:id="@+id/BottomContainer"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentBottom="true"
+     android:layout_alignParentLeft="true">
+
+     <ImageView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/bottombackground"
+         android:src="@drawable/backgroundposhte"
+         android:adjustViewBounds="true"
+         android:scaleType="fitXY"
+         android:layout_alignParentBottom="true"
+         android:contentDescription="@string/bac_poshte" />
+
+     <ImageButton
+         android:layout_width="110dp"
+         android:layout_height="match_parent"
+         android:text="@string/Logout"
+         android:id="@+id/button_logout"
+         android:layout_marginRight="5dp"
+         android:layout_alignParentRight="true"
+         android:adjustViewBounds="true"
+         android:scaleType="fitCenter"
+         android:src="@drawable/close"
+         android:background="@null"
+         android:layout_alignParentBottom="true"
+         android:layout_alignTop="@+id/bottombackground"
+         android:contentDescription="@string/logout" />
+
+ </RelativeLayout>
+
+
+ <RelativeLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="2dp"
+     android:layout_alignParentBottom="true"
+     android:layout_alignParentLeft="true"
+     android:paddingBottom="7dp">
+
+     <TextView
+         android:text="@string/gejndja"
+         android:textColor="#c3c3c4"
+         android:textSize="17sp"
+         android:layout_width="220dp"
+         android:layout_height="60dp"
+         android:id="@+id/stadiMakinesGjendja"
+         android:background="@drawable/gjendjabackground"
+         android:layout_marginLeft="30dp"
+         android:adjustViewBounds="true"
+         android:scaleType="fitXY"
+         android:layout_alignParentBottom="true"
+         android:paddingLeft="105dp"
+         android:gravity="center_vertical"
+         android:layout_alignParentStart="false" />
+
+     <Button
+         android:maxHeight="140dp"
+         android:maxWidth="140dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/stadiMakines"
+         android:background="@drawable/free"
+         android:adjustViewBounds="true"
+         android:scaleType="fitXY"
+         android:layout_alignParentBottom="true"/>
+
+     <Button
+         android:maxHeight="140dp"
+         android:maxWidth="140dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/stadiMakinesbusy"
+         android:visibility="gone"
+         android:background="@drawable/busy"
+         android:adjustViewBounds="true"
+         android:scaleType="fitXY"
+         android:layout_alignBottom="@+id/stadiMakinesGjendja"
+         android:layout_toRightOf="@+id/stadiMakines"
+         android:layout_toEndOf="@+id/stadiMakines"
+         android:layout_marginStart="40dp" />
+
+ </RelativeLayout>
+ </RelativeLayout>

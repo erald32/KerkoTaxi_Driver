@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btnShowLocation" type="id">trego_vendndodhjen</item>
+    <item name="tvLocation" type="id">televizori</item>
+    <item name="driver_location" type="id">Vendndodhjashoferit</item>
+    <item name="menuLogout" type="id" />
+</resources>

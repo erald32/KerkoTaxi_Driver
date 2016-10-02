@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/login_repeatable"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:windowSoftInputMode="adjustPan|adjustResize"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/speedtaxilogo"
+            android:id="@+id/logo"
+            android:layout_marginBottom="5dp"
+            android:contentDescription="@string/logo_login" />
+
+        <TextView
+            android:text="@string/vehicle_nr"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nrMakine"
+            android:textColor="#fdbb30" />
+
+        <RelativeLayout
+            android:layout_marginBottom="20dp"
+            android:id="@+id/loginContainer"
+            android:layout_width="wrap_content"
+            android:src="@drawable/backgroundinputlogin"
+            android:layout_height="wrap_content">
+
+            <EditText android:id="@+id/editTextPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/kodi_unik"
+                android:textColor="#fdbb30"
+                android:background="@drawable/inputlogin" />
+
+            <ImageButton
+                android:id="@+id/buttonLogin"
+                android:layout_toRightOf="@+id/editTextPassword"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:background="@drawable/loginbtn"
+                android:contentDescription="@string/logini" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
+    <!--
+
+
+    <TextView android:id="@+id/linkSignup"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="24dp"
+         android:text="No account yet? Create one"
+         android:gravity="center"
+         android:textSize="16dip"/>
+     -->

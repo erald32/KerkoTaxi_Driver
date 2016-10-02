@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Kerko Taxi Driver</string>
+    <string name="title_activity_maps">Kerko Taxi Driver</string>
+    <string name="shoferi_loguar">Shoferi Loguar</string>
+    <string name="Adresa_Klientit">Adresa Klientit</string>
+    <string name="Nr.tel">Numri i telefonit</string>
+    <string name="Logout">Log Out</string>
+    <string name="get_client">Mora Klientin</string>
+    <string name="leave_client">Lashe Klietin</string>
+    <string name="logo_login">logoja</string>
+    <string name="kodi_unik">Kodi unik</string>
+    <string name="logini">login_button</string>
+    <string name="gejndja">Gjendja</string>
+    <string name="logout">logout</string>
+    <string name="bac_poshte">backgproundposhte</string>
+    <string name="taxist_name">Emer Taksisti</string>
+    <string name="vehicle_nr">NR MAKINES</string>
+    <string name="logoj2">logo_2</string>
+    <string name="restartapp">restartapp</string>
+    <string name="restart_app">restart_app</string>
+</resources>
