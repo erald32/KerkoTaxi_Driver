@@ -54,7 +54,7 @@
             android:value="AIzaSyCGZjX0g12cz86CquI6Alb7ZmCSltWgE3Q" />
 
         <activity
-            android:name="com.jeddigital.kerkotaxi_vehicle.ShowClientOnMap"
+            android:name="com.jeddigital.kerkotaxi_vehicle.LoginActivity"
             android:theme="@style/Theme.LoginTheme"
             android:screenOrientation="landscape"
             android:label="@string/title_activity_maps">
@@ -65,12 +65,12 @@
         </activity>
 
 
-  <!--      <activity
+     <activity
             android:name="com.jeddigital.kerkotaxi_vehicle.ShowClientOnMap"
             android:screenOrientation="landscape">
 
         </activity>
-  !-->
+
     </application>
 </manifest>
 <!--

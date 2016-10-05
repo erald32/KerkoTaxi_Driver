@@ -554,6 +554,7 @@ public class ShowClientOnMap extends FragmentActivity implements LocationListene
                 Map<String,String> params = new HashMap<>();
                 params.put(Config.KEY_GET_REQUEST_LIST, get_request_list);
                 params.put(Config.KEY_VEHICLE_ID, vehicle_id_to_send);
+                Log.d("qqq_makinanr", vehicle_id_to_send);
                 return params;
             }
         };

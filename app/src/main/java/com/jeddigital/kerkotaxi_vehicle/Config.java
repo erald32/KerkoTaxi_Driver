@@ -1,7 +1,7 @@
 package com.jeddigital.kerkotaxi_vehicle;
 public class Config {
     //URL to web app file (app.php)
-    public static final String WEB_APP_URL = "http://www.jeddigital.com/kerko_taxi/services/vehicles/vehicles.php";
+    public static final String WEB_APP_URL = "http://www.1upinteractive.com/vodafonetour/taxi/services/vehicles/vehicles.php";
 
     //Keys for login code  as defined in our $_POST['key'] in app.php
     public static final String KEY_LOGIN = "login";
