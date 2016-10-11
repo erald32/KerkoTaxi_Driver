@@ -73,6 +73,7 @@ public class ShowClientOnMap extends FragmentActivity implements LocationListene
     MediaPlayer Notifikimi_kerkeses;
     Button Stadi_Makines_Free_Going;
     Button Stadi_Makines_Busy;
+    Button AnulloWaitngClient;
     TextView Gjenjda_Text;
 
     AlertDialog checkRequestAD;
@@ -186,6 +187,7 @@ public class ShowClientOnMap extends FragmentActivity implements LocationListene
 
         Stadi_Makines_Free_Going = (Button) findViewById(R.id.stadiMakines);
         Stadi_Makines_Busy = (Button) findViewById(R.id.stadiMakinesbusy);
+        AnulloWaitngClient = (Button) findViewById(R.id.anullo_waiting_client);
         Log.d("qqqoncreate_booking_id", Preferencat.getString(Config.BOOKING_ID_PREF, ""));
         Log.d("qqqoncreate_id_shoferit",Preferencat.getString(Config.ID_E_SHOFERIT_PREF,""));
         Log.d("qqqoncreate_id_makines", Preferencat.getString(Config.ID_E_MAKINES_PREF, ""));
@@ -302,6 +304,13 @@ public class ShowClientOnMap extends FragmentActivity implements LocationListene
                                     @Override
                                     public void onClick(View arg0) {
                                         mora_klientin();
+                                    }
+                                });
+                                AnulloWaitngClient.setVisibility(View.VISIBLE);
+                                AnulloWaitngClient.setOnClickListener(new View.OnClickListener() {                   ///////////////////////////////////////**//////////////////////////////
+                                    @Override
+                                    public void onClick(View arg0) {
+                                        anullo_duke_pritur_klientin();
                                     }
                                 });
                                 /*double Latitude_e_klientit = Double.parseDouble(LAT);
@@ -960,9 +969,7 @@ public class ShowClientOnMap extends FragmentActivity implements LocationListene
         requestQueue.add(stringRequest);
     }
 
-
     private void arrived(){
-
         SharedPreferences Preferencat = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
         final String arrivedToClient = "arrived_to_client";
@@ -985,6 +992,14 @@ public class ShowClientOnMap extends FragmentActivity implements LocationListene
                                 @Override
                                 public void onClick(View arg0) {
                                     mora_klientin();
+                                }
+                            });
+
+                            AnulloWaitngClient.setVisibility(View.VISIBLE);
+                            AnulloWaitngClient.setOnClickListener(new View.OnClickListener() {                   ///////////////////////////////////////**//////////////////////////////
+                                @Override
+                                public void onClick(View arg0) {
+                                    anullo_duke_pritur_klientin();
                                 }
                             });
                         }
@@ -1057,6 +1072,107 @@ public class ShowClientOnMap extends FragmentActivity implements LocationListene
         requestQueue.add(stringRequest);
     }
 
+    private void anullo_duke_pritur_klientin(){
+        SharedPreferences Preferencat = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+        final String deny_request       = "cancelrequest_waiting_client";
+        final String booking_id_to_send =  Preferencat.getString(Config.BOOKING_ID_PREF, "vlera default");
+        final String vehicle_id         =  Preferencat.getString(Config.ID_E_MAKINES_PREF,"");
+        final String send_latitude      =  Preferencat.getString(Config.lATITTUDE_MAKINES_PREF,"");
+        final String send_longitude     =  Preferencat.getString(Config.lONGITUDE_MAKINES_PREF,"");
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.WEB_APP_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase(String.valueOf(Config.RESPONSE_SUCCESS))) {
+                            Log.d("qqq", "u refuzua kerkesa nga shoferi duke pritur klientin");
+                            googleMap.clear();
+                            AnulloWaitngClient.setVisibility(View.GONE);
+                            Stadi_Makines_Free_Going.setBackgroundResource(R.drawable.free);
+                            Stadi_Makines_Free_Going.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View arg0) {
+                                    //  shoferi_merr_vete_klientin();
+                                }
+                            });
+                            Gjenjda_Text.setText("I LIRE");
+                            ndaloEkzekutimin_requests= false;
+                            handler.post(on_off_get_request_list);                                   // start checking for requests
+                        }
+
+                        else if (response.equalsIgnoreCase(String.valueOf(Config.BOOKING_NOT_VALID_CLIENT_REFUSE))) {
+
+                            googleMap.clear();
+                            AnulloWaitngClient.setVisibility(View.GONE);
+                            Stadi_Makines_Free_Going.setBackgroundResource(R.drawable.free);
+                            Stadi_Makines_Free_Going.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View arg0) {
+                                    //      shoferi_merr_vete_klientin();
+                                }
+                            });
+                            new AlertDialog.Builder(ShowClientOnMap.this)
+                                    .setTitle("Porosia juaj eshte anulluar nga klienti")
+                                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    }).show();
+
+                            ndaloEkzekutimin_requests= false;
+                            handler.post(on_off_get_request_list);                                   // start checking for requests
+                        }
+
+                        else {
+                            Log.d("qqq", response);
+                            Toast.makeText(ShowClientOnMap.this, "ServerError: anullo_duke_pritur_klientin()"+ response , Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("qqq", "ErrorResponse: " + error.getMessage());
+                if(error instanceof NoConnectionError) {
+                    Toast.makeText(ShowClientOnMap.this, "Ju nuk keni internet per momentin. Ju lutem provoni perseri pas 5 sekondash" , Toast.LENGTH_SHORT).show();
+                }
+                else if( error instanceof TimeoutError) {
+                    Toast.makeText(ShowClientOnMap.this, "Ju keni TIMEOUT. BENI RESTART Internetin" , Toast.LENGTH_SHORT).show();
+                }
+                else if (error instanceof AuthFailureError) {
+                    Log.d("qqq", "AuthFailureError: " + error.getMessage());
+                } else if (error instanceof ServerError) {
+                    Log.d("qqq", "ServerError: " + error.getMessage());
+                } else if (error instanceof NetworkError) {
+                    Log.d("qqq", "NetworkError: " + error.getMessage());
+                } else if (error instanceof ParseError) {
+                    Log.d("qqq", "ParseError: " + error.getMessage());
+                }
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+
+                ndaloEkzekutimin_if_request_valid = true;                          // stop checking if still valid
+                handler.post(on_off_get_if_request_still_valid);
+                Log.d("qqq", "u ndalua ekzekutimi still valid ne waititng client");
+
+                params.put(Config.KEY_DENY_REQUEST_ON_WAITING, deny_request);
+                params.put(Config.KEY_BOOKING_ID, booking_id_to_send);
+                params.put(Config.KEY_VEHICLE_ID, vehicle_id);
+                params.put(Config.KEY_LAT_MAKINES, send_latitude);
+                params.put(Config.KEY_LNG_MAKINES, send_longitude);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+
+
     private void mora_klientin(){
         SharedPreferences Preferencat = getSharedPreferences(Config.SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
@@ -1074,6 +1190,7 @@ public class ShowClientOnMap extends FragmentActivity implements LocationListene
                         if(response.equalsIgnoreCase((Config.RESPONSE_SUCCESS))){
                             Log.d("qqq", "U MOR KLIENTI " + response );
 
+                            AnulloWaitngClient.setVisibility(View.GONE);
                             Stadi_Makines_Free_Going.setVisibility(View.INVISIBLE);
                             Stadi_Makines_Busy.setVisibility(View.VISIBLE);
                             Gjenjda_Text.setText("I ZENE");

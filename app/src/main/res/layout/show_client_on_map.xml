@@ -82,6 +82,7 @@
          android:scaleType="fitXY"
          android:layout_alignParentBottom="true"/>
 
+
      <Button
          android:maxHeight="140dp"
          android:maxWidth="140dp"
@@ -96,6 +97,20 @@
          android:layout_toRightOf="@+id/stadiMakines"
          android:layout_toEndOf="@+id/stadiMakines"
          android:layout_marginStart="40dp" />
+
+     <Button
+         android:maxHeight="140dp"
+         android:maxWidth="140dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Anullo"
+         android:id="@+id/anullo_waiting_client"
+         android:visibility="gone"
+         android:adjustViewBounds="true"
+         android:scaleType="fitXY"
+         android:layout_alignParentTop="true"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentStart="true" />
 
  </RelativeLayout>
  </RelativeLayout>

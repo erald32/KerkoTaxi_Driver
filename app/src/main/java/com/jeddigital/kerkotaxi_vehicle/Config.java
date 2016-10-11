@@ -22,6 +22,7 @@ public class Config {
     public static final String KEY_GET_STATUS_REQUEST = "getrequeststatus";
     public static final String KEY_GET_BOOKING_STATUS = "bookingstatus";
     public static final String KEY_DENY_REQUEST = "cancelrequest";
+    public static final String KEY_DENY_REQUEST_ON_WAITING = "cancelrequest_waiting_client";
     public static final String KEY_BOOKING_ID= "booking_id";
     public static final String KEY_PICKUP_CLIENT = "pickupClient";
     public static final String KEY_ARRIVED_TO_CLIENT = "arrived_to_client";
